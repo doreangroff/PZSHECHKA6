@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace microchelik2
 {
-    internal class Cyborg : daun
+    internal class Cyborg : RepuckByIluhich
     {
         Head head;
         Body body;
