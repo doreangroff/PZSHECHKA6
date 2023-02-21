@@ -9,10 +9,11 @@ namespace microchelik2
 {
     internal class Cyborg : RepuckByIluhich
     {
-        Head head;
-        Body body;
-        Hands hands;
-        Legs legs;
+        public string name;
+        public Head head;
+        public Body body;
+        public Hands hands;
+        public Legs legs;
 
         public Cyborg(Head head, Body body, Hands hands, Legs legs)
         {

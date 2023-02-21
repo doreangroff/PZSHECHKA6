@@ -18,7 +18,7 @@ namespace microchelik2
                 Body body = new Body();
                 Hands hands = new Hands();
                 Legs legs = new Legs(); 
-                List<string> humans = new List<string>();
+                List<Cyborg> humans = new List<Cyborg>();
                 //кортеж
                
                 int s;
@@ -68,6 +68,8 @@ namespace microchelik2
                     legs.L = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine($"Угол положения");
                     legs.Angle = Convert.ToInt32(Console.ReadLine());
+                    Cyborg chel = new Cyborg(head, body, hands, legs);
+                    chel.name = name;
                     Console.WriteLine();
                     //рост
                     Console.WriteLine("Расчитать рост? (Да/Нет)");
@@ -80,49 +82,20 @@ namespace microchelik2
                         Console.WriteLine("Ну ладна");
                     
                     }
-                    if (true)
-	                {
-                        humans.Add(name);
-	                }
                     
-                    --num;
+                    humans.Add(chel);
 
-                    
-                                 
+                    --num;
+          
                     Console.WriteLine();
                 }
-                    
-                
+
                 Console.WriteLine("Список созданных людей:");
-                foreach (var human in humans)
-                {
-                    Console.Write($"{human}, ");
-                }
                
 
-                //киборг
-                //Cyborg kiborg = new Cyborg(head, body, hands, legs);
-                //kiborg.Power = 0;
-                //Console.WriteLine("Теперь настало время киборга");
-                //Thread.Sleep(1000);
-                //Console.ForegroundColor = ConsoleColor.Green;
-                //Console.WriteLine("Введите мощь экзоскилета");
-                //Console.WriteLine($"ВАЖНО!!! Мощь экзоскилета должна быть не менее площади туловища ({s})");
-                //do
-                //{
-                   // kiborg.Power = Convert.ToInt32(Console.ReadLine());
-                    //if (kiborg.Power > s)
-                    //{
-                    //    Console.WriteLine("Жесткий и рисковый");
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine("Бро надо тренироваться. Повтори попытку");
+                vivod(humans);
 
-                    //}
-                    
-//                } while (kiborg.Power < s);
-  //              kiborg.yadaun();
+               
 
             }
             catch
@@ -132,6 +105,22 @@ namespace microchelik2
 
             Console.ReadKey();
 
+        }
+
+        public static void vivod(List<Cyborg> chels)
+        {
+            var coolchels = chels.Where(c => c.legs.L > 90 && c.hands.L > 65).Select(c => c.name).ToList();
+            coolchels.ForEach(c => Console.WriteLine(c));
+        }
+
+        public static void vvod(List<Cyborg> chels, int c = 0)
+        {
+            if (c < chels.Count)
+            { 
+                Console.WriteLine(chels[c].name);
+                c++;
+                vvod(chels, c);
+            }
         }
     }
 }
